@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Navbar</title>
+    <link rel="stylesheet" href="/static/pure-min-3.0.0.css">
+    <link rel="stylesheet" href="/static/navbar.css">
+</head>
+<body>
+    <div class="custom-navbar pure-menu pure-menu-horizontal">
+        <button class="dark-toggle-btn floating-dark-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+        <a href="#" class="pure-menu-heading floating-heading">My Website</a>
+        <button class="navbar-mobile-dark-btn" onclick="toggleDarkMode();" aria-label="Toggle dark mode" style="display:none;">
+            <span id="mobile-dark-icon">🌙</span>
+        </button>
+        <span class="navbar-mobile-title" style="display:none;">My Website</span>
+        <div class="navbar-center">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Blog</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Portfolio</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const btn = document.querySelector('.dark-toggle-btn');
+        const mobileIcon = document.getElementById('mobile-dark-icon');
+        if(document.body.classList.contains('dark-mode')) {
+            if(btn) btn.textContent = '☀️';
+            if(mobileIcon) mobileIcon.textContent = '☀️';
+        } else {
+            if(btn) btn.textContent = '🌙';
+            if(mobileIcon) mobileIcon.textContent = '🌙';
+        }
+    }
+    </script>
+</body>
+</html>
