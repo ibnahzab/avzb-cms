@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Navbar</title>
-    <link rel="stylesheet" href="/static/pure-min-3.0.0.css">
-    <link rel="stylesheet" href="/static/navbar.css">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/pure-min-3.0.0.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
 </head>
 <body>
     <div class="custom-navbar pure-menu pure-menu-horizontal">
@@ -24,6 +24,40 @@
             </ul>
         </div>
     </div>
+    
+    <div class="row">
+        <!-- Main Card -->
+        <div class="card">
+            {% for heading_title, description, circular_image in data %}
+            {% set image_url = circular_image %}
+            <div class="content">
+                <div class="item">
+                    <h2></h2>
+                    <img src="{{ image_url }}" class="circular-image">
+                </div>
+            </div>
+            <h1>Welcome to the {{ heading_title }}</h1>
+            <p>{{ description }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Stacked Cards -->
+        <div class="stacked-cards">
+            <h2>Latest Posts</h2>
+            {% set stacked_image_url = data[0][2] %}
+            {% for i in range(5) %}
+            <div class="stacked-card">
+                <img src="{{ stacked_image_url }}" alt="Stacked Image">
+                <div class="stacked-card-content">
+                    <h3>Card Title {{ i + 1 }}</h3>
+                    <p>This is the content for card {{ i + 1 }}. You can add more details here.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
     <script>
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
