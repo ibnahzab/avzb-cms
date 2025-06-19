@@ -25,7 +25,7 @@ body.dark-mode {
     width: 100%;
     z-index: 1000;
     transition: background 0.3s, color 0.3s;
-w       display: flex;
+    display: flex;
     align-items: center;
     justify-content: flex-start;
 }
@@ -311,4 +311,110 @@ body, button, input, select, textarea {
     background: var(--navbar-text);
     color: var(--navbar-bg);
     box-shadow: 0 0 16px 4px var(--navbar-hover), 0 2px 8px 0 rgba(0,0,0,0.18);
+}
+
+.circular-image {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Ensure the height matches the width */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits within the circular shape */
+    display: block; /* Optional: Ensures proper alignment */
+    margin: auto; /* Optional: Centers the image */
+}
+
+.row {
+    display: flex;
+    gap: 20px; /* Adds spacing between the main card and stacked cards */
+}
+
+.card {
+    flex: 1; /* Allows the card to take up available space */
+    width: 40%; /* Default width */
+    margin: 20px; /* Adds margin around the card */
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    padding: 16px;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+.card img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+    object-fit: cover;
+}
+.card .description {
+    overflow: hidden;
+}
+
+.stacked-cards {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex: 1; /* Allows the stacked cards to take up the remaining space */
+    display: flex;
+    flex-direction: column; /* Stacks the cards vertically */
+    gap: 10px; /* Adds spacing between stacked cards */
+}
+
+.stacked-card {
+    display: flex;
+    align-items: flex-start; /* Aligns the image and content at the top */
+    gap: 10px; /* Adds spacing between the image and content */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stacked-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px; /* Optional: Adds rounded corners to the image */
+    object-fit: cover;
+}
+
+.stacked-card-content {
+    display: flex;
+    flex-direction: column; /* Stacks the title and content vertically */
+}
+
+.stacked-card-content h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.stacked-card-content p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+@media (max-width: 890px) {
+    .row {
+        flex-direction: column; /* Stacks the main card and stacked cards vertically */
+    }
+
+    .card {
+        width: 100%; /* Full width for smaller screens */
+        margin: 16px; /* Adds margin around the card */
+    }
+
+    .card img {
+        width: 150px; /* Resize image to 150px */
+        height: 150px; /* Ensure height matches width */
+        border-radius: 50%; /* Keeps the image circular */
+        float: none; /* Removes floating */
+        margin: 0 auto 16px; /* Centers the image and adds spacing below */
+        display: block; /* Ensures proper alignment */
+    }
+
+    .stacked-cards {
+        width: 100%; /* Full width for smaller screens */
+    }
 }
