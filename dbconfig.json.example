@@ -1,0 +1,7 @@
+DB_CONFIG = {
+    "dbname": "dbname",
+    "user": "dbuser",
+    "password": "dbpass",
+    "host": "IP_address",
+    "port": 5432,
+}
