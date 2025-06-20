@@ -41,3 +41,16 @@ async def root(request: Request):
         return templates.TemplateResponse("index.html", {"request": request, "data": rows})
     except Exception as e:
         return {"error": str(e)}
+
+@app.get("/blogs")
+async def root(request: Request):
+    try:
+        conn = pool.getconn()
+        cursor = conn.cursor()
+        cursor.execute("SELECT heading_title, description, circular_image FROM data_home;")
+        rows = cursor.fetchall()
+        cursor.close()
+        pool.putconn(conn)
+        return templates.TemplateResponse("blogs.html", {"request": request, "data": rows})
+    except Exception as e:
+        return {"error": str(e)}
