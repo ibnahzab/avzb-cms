@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
 </head>
 <body>
+    <!-- data = heading_title, description, circular image -->
+    {% set heading_title = data[0][0] %}
+    {% set description = data[0][1] %}
+    {% set circular_image = data[0][2] %}
     <div class="custom-navbar pure-menu pure-menu-horizontal">
         <button class="dark-toggle-btn floating-dark-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
-        <a href="#" class="pure-menu-heading floating-heading">My Website</a>
+        <a href="#" class="pure-menu-heading floating-heading">{{ heading_title }}</a>
         <button class="navbar-mobile-dark-btn" onclick="toggleDarkMode();" aria-label="Toggle dark mode" style="display:none;">
             <span id="mobile-dark-icon">🌙</span>
         </button>
-        <span class="navbar-mobile-title" style="display:none;">My Website</span>
+        <span class="navbar-mobile-title" style="display:none;"></span>
         <div class="navbar-center">
             <ul class="pure-menu-list">
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
@@ -28,27 +32,24 @@
     <div class="row">
         <!-- Main Card -->
         <div class="card">
-            {% for heading_title, description, circular_image in data %}
-            {% set image_url = circular_image %}
             <div class="content">
                 <div class="item">
                     <h2></h2>
-                    <img src="{{ image_url }}" class="circular-image">
+                    <img src="{{ circular_image }}" class="circular-image">
                 </div>
             </div>
             <h1>Welcome to the {{ heading_title }}</h1>
             <p>{{ description }}</p>
-            {% endfor %}
         </div>
 
         <!-- Stacked Cards -->
         <div class="stacked-cards">
-            <h2>Latest Posts</h2>
-            {% set stacked_image_url = data[0][2] %}
+            <h2>Latest Posts</h2>            
             {% for i in range(5) %}
             <div class="stacked-card">
-                <img src="{{ stacked_image_url }}" alt="Stacked Image">
+                <img src="{{ circular_image }}" alt="Stacked Image">
                 <div class="stacked-card-content">
+                    
                     <h3>Card Title {{ i + 1 }}</h3>
                     <p>This is the content for card {{ i + 1 }}. You can add more details here.</p>
                 </div>
