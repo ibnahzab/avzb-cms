@@ -1,4 +1,4 @@
-DB_CONFIG = {
+{
     "dbname": "dbname",
     "user": "dbuser",
     "password": "dbpass",
